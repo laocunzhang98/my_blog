@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    详情
+{% endblock %}
+{% block mycss %}
+    <link href="{% static 'css/info.css' %}" rel="stylesheet">
+    <link href="{% static 'css/m.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="infos">
+        <div class="newsview">
+            <h2 class="intitle">您现在的位置是：<a href="/">网站首页</a>&nbsp;&gt;&nbsp;<a href="/">学无止境</a></h2>
+
+            <h3 class="news_title">{{ article.title }}</h3>
+            <div class="news_author"><span class="au01">{{ article.user.username }}</span><span
+                    class="au02">{{ article.date}}</span><span class="au03">共<b>{{ article.click_num }}</b>人围观</span>
+            </div>
+            <div class="tags">
+                {% for tag in article.tags.all %}
+                    <a href="/">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+            <div class="news_about"><strong>简介</strong>{{ article.desc }}
+            </div>
+{#            <div class="news_infos">#}
+                <p>{{ article.content|safe }}</p>
+
+{#            </div>#}
+        </div>
+        <br>
+    </div>
+    <div class="nextinfo">
+        <p>上一篇：<a href="{% url 'article:detail' %}?id={{ previous_article.id }}">{{ previous_article.title }}</a></p>
+        <p>下一篇：<a href="{% url 'article:detail' %}?id={{ next_article.id}}">{{ next_article.title }}</a></p>
+    </div>
+    <div class="otherlink">
+        <h2>相关文章</h2>
+        <ul>
+            {% for artcileabout in list_about %}
+                <li><a href="{% url 'article:detail' %}?id={{ artcileabout.id }}"
+                       title="云南之行——丽江古镇玉龙雪山">{{ artcileabout.title }}</a></li>
+            {% endfor %}
+
+
+        </ul>
+    </div>
+    <div class="news_pl">
+        <h2>文章评论</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <p><span>{{ comment.nickname }}</span> <span>{{ comment.date }}</span></p>
+                    <p>{{ comment.content }}</p>
+                </li>
+            {% endfor %}
+
+
+        </ul>
+        <div id="plpost">
+            <p><span>来说句话吧....</span> <span>共有评论数:{{ comments.count }}条</span></p>
+
+            <p><input type="text" name="uname" id="uname" placeholder="输入用户昵称"></p>
+            <p>
+                <textarea name="saytext" id="saytext" cols="80" rows="6">
+
+                </textarea>
+            </p>
+            <p><input type="submit" value="评论" id='btncomment'></p>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(function () {
+            // 得到按钮对象
+            $('#btncomment').click(function () {
+                //从文本框中取值
+                var nickname = $('#uname').val();
+                var saytext = $('#saytext').val();
+                //发出请求
+                $.getJSON('{% url 'article:comment' %}', {
+                    nickname: nickname,
+                    saytext: saytext,
+                    aid: '{{ article.id }}'
+                }, function (data) {
+                    if(data.status==1){
+                        window.location.href='{% url 'article:detail' %}?id={{ article.id }}'
+                    }
+                })
+            });
+        });
+
+    </script>
+{% endblock %}
+
