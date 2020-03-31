@@ -1,8 +1,6 @@
-from ckeditor_uploader.fields import RichTextUploadingField
+
 from django.db import models
 from mdeditor.fields import MDTextField #必须导入
-# Create your models here.
-# title desc  content    date   click_num    image  love_num    author  tags
 from user.models import UserProfile
 
 
@@ -21,6 +19,7 @@ class Tag(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='标题')
     desc = models.CharField(max_length=256, verbose_name='简介')
+
     content = MDTextField(verbose_name='内容')
     date = models.DateField(auto_now=True, verbose_name='发表日期')
     click_num = models.IntegerField(default=0, verbose_name='点击量')

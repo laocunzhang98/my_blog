@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 
 from django.urls import path, include, re_path
 from django.views.static import serve
@@ -24,7 +23,7 @@ from blog.settings import MEDIA_ROOT
 from user.views import index
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+
     path('xadmin/', xadmin.site.urls),
     path('', index, name='index'), # 首页
     path('user/', include('user.urls', namespace='user')), # 用户

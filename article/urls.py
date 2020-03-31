@@ -7,7 +7,6 @@ app_name = 'article'
 urlpatterns = [
     path('detail', article_detail, name='detail'),
     path('show', article_show, name='show'),
-    # path('write', write_article, name='write'),# 写文章
     path('comment', article_comment, name='comment'),
     path('message', blog_message, name='message'),
 ]
