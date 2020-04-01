@@ -17,7 +17,7 @@
                     {% for message in page.object_list %}
                         <div class="fb">
                             <ul>
-                                <span class="tximg"><img src=" {{ message.icon }}"></span>
+                                <span class="tximg"><img height="88px" width="88px" src=" {{ message.icon }}"></span>
                                 <p class="fbtime"><span>{{ message.date }}</span> {{ message.nickname }}</p>
                                 <p class="fbinfo">{{ message.content }}</p>
                             </ul>
@@ -38,7 +38,7 @@
                             {% endif %}
                         {% endfor %}
                         <a href="{% url 'article:message' %}?page={% if page.has_next %}{{ page.next_page_number }}{% else %}{{ page.paginator.num_pages }}{% endif %}">&gt;</a>
-                        <a href="/news/index_5.html">&gt;&gt;</a>
+
                     </div>
                     <div class="gbox">
                         <form action="{% url 'article:message' %}" method="post" name="form1" id="form1">
@@ -49,14 +49,15 @@
                                 *</p>
                             <p><span>选择头像:</span> *</p>
                             <p><i>
+                                <span class="lypic">
+                                    <input type="radio" value="{% static 'images/tx2.jpg' %}" id="2" name="mycall"
+                                           style="display:none">
 
-                                <input type="radio" value="{% static 'images/tx2.jpg' %}" id="2" name="mycall"
-                                       style="display:none">
-                                <img id="b" src="{% static 'images/tx2.jpg' %}" onclick="myFun(this.id)"></i> <i>
-                                <input type="radio" value="{% static 'images/tx3.jpg' %}" id="3" name="mycall"
-                                       style="display:none">
-                                <img id="c" src="{% static 'images/tx3.jpg' %}" onclick="myFun(this.id)"></i> <i>
-
+                                    <img height="100px" width="100px" id="b" src="{% static 'images/tx2.jpg' %}" onclick="myFun(this.id)"></i> <i>
+                                    <input type="radio" value="{% static 'images/tx3.jpg' %}" id="3" name="mycall"
+                                           style="display:none">
+                                    <img height="100px" width="100px" id="c" src="{% static 'images/tx3.jpg' %}" onclick="myFun(this.id)"></i> <i>
+                                </span>
 
                             <p><span class="tnr">留言内容:</span>
                                 <textarea name="lytext" cols="60" rows="12" id="lytext"></textarea>

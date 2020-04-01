@@ -8,6 +8,7 @@
     padding: 20px;
     overflow: hidden;
 }
+.lypic img{ max-width:66px; max-height: 66px}
 
 .gbox p {
     margin-bottom: 10px;

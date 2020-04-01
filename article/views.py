@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.core.checks import Tags
+
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -61,7 +61,6 @@ def article_show(request):
     # page.has_previous()  # 判断是否存在前一页
     # page.next_page_number() # 获取下一页的页码数
     # page.previous_page_number() # 获取前一页的页码数
-
     # 属性：
     # object_list   当前页的所有对象
     #  number       当前的页码数
@@ -69,33 +68,6 @@ def article_show(request):
 
     return render(request, 'article/learn.html', context={'page': page, 'tags': tags, 'tid': tid})
 
-
-
-@login_required
-def write_article(request):
-    if request.method == 'GET':
-        aform = ArticleForm()
-        return render(request, 'article/write.html', context={'form': aform})
-    else:
-        aform = ArticleForm(request.POST, request.FILES)
-        if aform.is_valid():
-            data = aform.cleaned_data
-            article = Article()
-            article.title = data.get('title')
-            article.desc = data.get('desc')
-            article.content = data.get('content')
-            print(type(data.get('image')))
-
-            article.image = data.get('image')
-            article.desc = data.get('desc')
-            article.user = request.user  # 1对多 直接赋值
-            article.save()
-
-            # 多对多 必须添加到文章保存的后面添加
-            article.tags.set(data.get('tags'))
-            return redirect(reverse('index'))
-
-        return render(request, 'article/write.html', context={'form': aform})
 
 # 文章评论
 def article_comment(request):

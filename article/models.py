@@ -39,7 +39,7 @@ class Article(models.Model):
 
 # nickname  date  content
 class Comment(models.Model):
-    nickname = models.CharField(max_length=50, verbose_name='昵称')
+    nickname = models.CharField(max_length=50, verbose_name='昵称', default="游客")
     content = models.TextField(verbose_name='内容')
     date = models.DateTimeField(auto_now=True, verbose_name='评论时间')
 
@@ -58,7 +58,7 @@ class Comment(models.Model):
 class Message(models.Model):
     nickname = models.CharField(max_length=50, verbose_name='昵称')
     content = models.TextField(verbose_name='内容')
-    icon =models.CharField(max_length=150,verbose_name='头像',default='images/tx1.jpg')
+    icon =models.CharField(max_length=150,verbose_name='头像', default='images/tx1.jpg')
     date = models.DateTimeField(auto_now=True, verbose_name='留言时间')
 
     def __str__(self):

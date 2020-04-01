@@ -19,7 +19,7 @@
             </div>
             <div class="tags">
                 {% for tag in article.tags.all %}
-                    <a href="/">{{ tag.name }}</a>
+                    <a href="#">{{ tag.name }}</a>
                 {% endfor %}
             </div>
             <div class="news_about"><strong>简介</strong>{{ article.desc }}
@@ -40,7 +40,7 @@
         <ul>
             {% for artcileabout in list_about %}
                 <li><a href="{% url 'article:detail' %}?id={{ artcileabout.id }}"
-                       title="云南之行——丽江古镇玉龙雪山">{{ artcileabout.title }}</a></li>
+                       title={{ artcileabout.title }}>{{ artcileabout.title }}</a></li>
             {% endfor %}
 
 

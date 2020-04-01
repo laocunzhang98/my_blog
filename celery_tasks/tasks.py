@@ -13,7 +13,7 @@ django.setup()
 from user.models import UserProfile
 
 
-app = Celery('celery_tasks.tasks', broker='redis://192.168.207.128:6379/4')
+app = Celery('celery_tasks.tasks', broker='redis://127.0.0.1:6379/4')
 
 
 @app.task

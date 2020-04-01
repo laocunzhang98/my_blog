@@ -34,7 +34,7 @@
             <div class="w3layouts-main">
                 <h2><span>个人信息</span></h2>
                 <p>{{ msg }}</p>
-                <form action="{% url "user:center1" %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                <form action="{% url "user:center" %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
                     <div>
                         <div align="center"><img src="{{ user.yunicon }}" alt="" id="icon" onclick="F_Open_dialog()"></div><br>
                         <div class="imgbox"><input type="file" name="icon" id="btn_file"></div>

@@ -9,7 +9,7 @@ from django.contrib.auth.hashers import make_password, check_password
 # from django.contrib.auth.views import logout
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django import views
 
 # Create your views here.
@@ -102,16 +102,14 @@ def user_center(request):
         mobile = request.POST.get('mobile')
         icon = request.FILES.get('icon')
         user = UserProfile.objects.filter(username=username).first()
-        # print(type(icon))
-        print(icon)
-        print(icon.name)
-        # print(icon.read())
+
         # 更新用户
         user.username = username
         user.email = email
         user.mobile = mobile
         if icon != None:
-            user.icon = icon  # ImageField(upload_to='')
+            save_path = upload_image(icon)
+            user.yunicon = save_path
         user.save()
 
         return render(request, 'user/center.html', context={'user': user})
@@ -146,22 +144,6 @@ def user_center1(request):
         return render(request, 'user/center.html', context={'user': user, "yunicon":user.yunicon})
 
 
-# 测试注册类
-def user_zhuce(request):
-    if request.method == 'GET':
-        rform = RegisterForm()
-        return render(request, 'user/zhuce.html', context={'rform': rform})
-    else:
-        rform = UserRegisterForm(request.POST)
-        if rform.is_valid():
-            print(rform.cleaned_data)
-            username = rform.cleaned_data.get('username')
-            email = rform.cleaned_data.get('email')
-            mobile = rform.cleaned_data.get('mobile')
-            password = rform.cleaned_data.get('password')
-
-            # 数据库中注册
-        return HttpResponse('yiui')
 
 # 手机验证码登录
 def code_login(request):
@@ -276,3 +258,18 @@ def valide_code(request):
             data = {'status': 0}
         print(data["status"])
         return JsonResponse(data)
+
+
+def page_not_found(request, exception):
+    from django.shortcuts import render_to_response
+    response = render_to_response('404.html', {})  # first/404.html html页面
+    response.status_code = 404
+    return response
+
+
+# 全局500
+def page_error(exception):
+    from django.shortcuts import render_to_response
+    response = render_to_response('500.html', {})
+    response.status_code = 500
+    return response

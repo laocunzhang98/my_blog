@@ -14,23 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-
 from django.urls import path, include, re_path
 from django.views.static import serve
-
 import xadmin
 from blog.settings import MEDIA_ROOT
 from user.views import index
+from user import views
 
 urlpatterns = [
 
     path('xadmin/', xadmin.site.urls),
-    path('', index, name='index'), # 首页
-    path('user/', include('user.urls', namespace='user')), # 用户
+    path('', index, name='index'),  # 首页
+    path('user/', include('user.urls', namespace='user')),  # 用户
     path('article/', include('article.urls', namespace='article')),
     url(r'mdeditor/', include('mdeditor.urls')),
-    re_path(r'^captcha/', include('captcha.urls')), # 验证码配置
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}), # 配置
+    re_path(r'^captcha/', include('captcha.urls')),  # 验证码配置
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),  # 配置
     # 加载ckeditor的urls
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
+handler404 = views.page_not_found
+handler500 = views.page_error

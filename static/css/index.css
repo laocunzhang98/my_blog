@@ -3,7 +3,7 @@
 .blog { margin: 30px 20px; overflow: hidden }
 .blog figure { background: #ececec; border: #FFF 10px solid; width: 270px; height: 430px; float: left; margin: 0 8px 0; overflow: hidden }
 .blog figure img { display: block; margin: auto; height: 256px; overflow: hidden; }
-.blog figure p { font-size: 14px; text-shadow: #fff 1px 1px 0px; line-height: 26px; text-align: center; font-weight: bold }
+.blog figure p { font-size: 20px; text-shadow: #fff 1px 1px 0px; line-height: 26px; text-align: center; font-weight: bold }
 .blog figure p a { color: #226039; }
 .blog figure figcaption { padding: 10px; line-height: 22px; color: #666; }
 .blog figure ul { background: url(../images/yu.png) no-repeat center; overflow: hidden; height: 256px; margin-bottom: 20px }
@@ -26,6 +26,8 @@
 .cbp_tmtimeline > li .cbp_tmlabel:after { right: 100%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-right-color: #3594cb; border-width: 10px; top: 10px; }
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after { border-right-color: #579dc5; }
 .cbp_tmtimeline > li .cbp_tmicon { width: 10px; height: 10px; font-family: 'ecoico'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; font-size: 1.4em; line-height: 40px; -webkit-font-smoothing: antialiased; position: absolute; color: #fff; background: #46a4da; border-radius: 50%; box-shadow: 0 0 0 3px #afdcf8; text-align: center; left: 170px; top: 15px; margin: 0 0 0 -25px; }
+.figure1 img{width: 270px; height: 256px}
+.figure1 font{font-size:20px}
 .blogpic { width: 200px; height: 120px; overflow: hidden; display: block; float: left; margin-right: 20px; }
 .blogpic img { width: 100%; height: auto; margin: auto; }
 a.readmore { background: #075498; color: #fff; padding: 5px 10px; float: right; margin: 20px 0 0 0; border-radius: 5px; }
