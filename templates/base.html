@@ -39,7 +39,7 @@
     <nav class="topnav" data-scroll-reveal="enter bottom over 1s after 1s">
         <a href="{% url 'index' %}"><span>首页</span><span class="en">Home</span></a>
         <a href="{% url 'article:show' %}"><span>学无止境</span><span class="en">Learn</span></a>
-        <a href="learn.html"><span>关于我</span><span class="en">About</span></a>
+        <a href="{% url 'user:about_me' %}"><span>关于我</span><span class="en">About</span></a>
         <a href="{% url 'user:center' %}"><span>个人资料</span><span class="en">Detail</span></a>
         <a href="{% url 'article:message' %}"><span>留言</span><span class="en">Saying</span></a></nav>
 </header>
@@ -55,15 +55,42 @@
 <br>
 <footer>
     Design by 王伟 </br>
-    <a href="/">冀ICP备20006001号</a></br>
+    <a href="http://www.beian.miit.gov.cn/">冀ICP备20006001号</a></br>
+
+    网站已运行:<span id="run_time" style="color:white"></span>
+
+
+
 </footer>
 <script>
     if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
         (function () {
             window.scrollReveal = new scrollReveal({reset: true});
         })();
+    };
+</script>
+<script>
+    function runTime() {
+        var d = new Date(), str = '';
+        BirthDay = new Date("March 31,2020");
+        today = new Date();
+        timeold = (today.getTime() - BirthDay.getTime());
+        sectimeold = timeold / 1000
+        secondsold = Math.floor(sectimeold);
+        msPerDay = 24 * 60 * 60 * 1000
+        msPerYear = 365 * 24 * 60 * 60 * 1000
+        e_daysold = timeold / msPerDay
+        e_yearsold = timeold / msPerYear
+        daysold = Math.floor(e_daysold);
+        yearsold = Math.floor(e_yearsold);
+        //str = yearsold + "年";
+        str += daysold + "天";
+        str += d.getHours() + '时';
+        str += d.getMinutes() + '分';
+        str += d.getSeconds() + '秒';
+        return str;
     }
-    ;
+    setInterval(function () { $('#run_time').html(runTime()) }, 1000);
 </script>
 {% block myjs %}
 

@@ -259,6 +259,10 @@ def valide_code(request):
         print(data["status"])
         return JsonResponse(data)
 
+def about_me(request):
+    '''本人介绍'''
+    return render(request, "user/about.html",{})
+
 
 def page_not_found(request, exception):
     from django.shortcuts import render_to_response

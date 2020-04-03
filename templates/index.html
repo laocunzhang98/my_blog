@@ -3,7 +3,7 @@
 {% block content %}
     <div class="blog" data-scroll-reveal="enter top">
         {% for figure_article in figure_articles %}
-            <figure>
+            <figure class="figure1">
                 <ul>
                     <a href="{% url 'article:detail' %}?id={{ figure_article.id }}"><img
                             src="{{ MEDIA_URL }}{{ figure_article.image }}"><span>点击查看详情</span></a>

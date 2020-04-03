@@ -45,22 +45,27 @@
                             {% csrf_token %}
                             <p><strong>来说点儿什么吧...</strong></p>
                             <p><span> 您的姓名:</span>
-                                <input name="name" type="text" id="name"/>
-                                *</p>
+                                *<input name="name" type="text" id="name" required="required"/>
+                            </p>
                             <p><span>选择头像:</span> *</p>
-                            <p><i>
+                            <p>
                                 <span class="lypic">
+                                    <i>
                                     <input type="radio" value="{% static 'images/tx2.jpg' %}" id="2" name="mycall"
                                            style="display:none">
 
-                                    <img height="100px" width="100px" id="b" src="{% static 'images/tx2.jpg' %}" onclick="myFun(this.id)"></i> <i>
+                                    <img height="100px" width="100px" id="b" src="{% static 'images/tx2.jpg' %}" onclick="myFun(this.id)">
+                                    </i>
+                                    <i>
                                     <input type="radio" value="{% static 'images/tx3.jpg' %}" id="3" name="mycall"
                                            style="display:none">
-                                    <img height="100px" width="100px" id="c" src="{% static 'images/tx3.jpg' %}" onclick="myFun(this.id)"></i> <i>
+                                    <img height="100px" width="100px" id="c" src="{% static 'images/tx3.jpg' %}" onclick="myFun(this.id)">
+                                    </i>
+
                                 </span>
 
                             <p><span class="tnr">留言内容:</span>
-                                <textarea name="lytext" cols="60" rows="12" id="lytext"></textarea>
+                                <textarea name="lytext" cols="60" rows="12" id="lytext" required="required"></textarea>
                             </p>
                             <p>
                                 <input type="submit" name="Submit3" value="提交"/>

@@ -6,12 +6,14 @@
 {% block mycss %}
     <link href="{% static 'css/info.css' %}" rel="stylesheet">
     <link href="{% static 'css/m.css' %}" rel="stylesheet">
+    <link href="{% static 'md_css/mark.css' %}" rel="stylesheet">
+    <link href="{% static 'css/msg/m.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
     <div class="infos">
         <div class="newsview">
-            <h2 class="intitle">您现在的位置是：<a href="/">网站首页</a>&nbsp;&gt;&nbsp;<a href="/">学无止境</a></h2>
+            <h2 class="intitle">您现在的位置是：<a href="/">网站首页</a>&nbsp;&gt;&nbsp;<a href="{% url 'article:show' %}">学无止境</a></h2>
 
             <h3 class="news_title">{{ article.title }}</h3>
             <div class="news_author"><span class="au01">{{ article.user.username }}</span><span
@@ -24,10 +26,10 @@
             </div>
             <div class="news_about"><strong>简介</strong>{{ article.desc }}
             </div>
-{#            <div class="news_infos">#}
+            <div class="news_infos">
                 <p>{{ article.content|safe }}</p>
 
-{#            </div>#}
+            </div>
         </div>
         <br>
     </div>
@@ -59,16 +61,17 @@
 
         </ul>
         <div id="plpost">
+            <form method="post">
             <p><span>来说句话吧....</span> <span>共有评论数:{{ comments.count }}条</span></p>
 
-            <p><input type="text" name="uname" id="uname" placeholder="输入用户昵称"></p>
+            <p><input type="text" name="uname" id="uname" placeholder="输入用户昵称" required="required"></p>
             <p>
-                <textarea name="saytext" id="saytext" cols="80" rows="6">
+                <textarea name="saytext" id="saytext" cols="80" rows="6" required="required">
 
                 </textarea>
             </p>
-            <p><input type="submit" value="评论" id='btncomment'></p>
-
+            <p><input type="submit" value="评论" id='btncomment' ></p>
+            </form>
         </div>
     </div>
 

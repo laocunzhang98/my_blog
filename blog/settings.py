@@ -132,14 +132,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/4' # BACKEND配置，这里使用redis
@@ -164,28 +164,28 @@ EMAIL_FROM = '村长个人博客<782984630@qq.com>'
 
 # 中间件路由
 LOGIN_URL = '/user/login'
-QINIU_ACCESS_KEY='jc21N9zuCHLGz9bwQAN9rIFkb-ad8zZNMs6uLSMT'
-#七牛给开发者分配的 AccessKey
-
-QINIU_SECRET_KEY='a-9A_t7kEQfqNhB-0Govnp1AgsQ7OGhDtM1fIiHA'
-#七牛给开发者分配的 Secret
-
-QINIU_BUCKET_NAME='canteenblog'
-#用来存放文件的七牛空间(bucket)的名字
-
-QINIU_BUCKET_DOMAIN='q83ghz9j3.bkt.clouddn.com'
-#七牛空间(bucket)的域名
-
-QINIU_SECURE_URL = False      #使用http
-PREFIX_URL = 'http://'
-
-MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
-
-DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
-
-STATIC_URL = QINIU_BUCKET_DOMAIN + '/static/'
-# STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-STATICFILES_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
+# QINIU_ACCESS_KEY='jc21N9zuCHLGz9bwQAN9rIFkb-ad8zZNMs6uLSMT'
+# #七牛给开发者分配的 AccessKey
+#
+# QINIU_SECRET_KEY='a-9A_t7kEQfqNhB-0Govnp1AgsQ7OGhDtM1fIiHA'
+# #七牛给开发者分配的 Secret
+#
+# QINIU_BUCKET_NAME='canteenblog'
+# #用来存放文件的七牛空间(bucket)的名字
+#
+# QINIU_BUCKET_DOMAIN='q83ghz9j3.bkt.clouddn.com'
+# #七牛空间(bucket)的域名
+#
+# QINIU_SECURE_URL = False      #使用http
+# PREFIX_URL = 'http://'
+#
+# MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+#
+# DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
+#
+# STATIC_URL = QINIU_BUCKET_DOMAIN + '/static/'
+# # STATIC_URL = '/static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+# STATICFILES_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'

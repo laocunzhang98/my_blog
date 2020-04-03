@@ -72,12 +72,13 @@ width:840px;
 .memorial_day ul li.n5 { position: absolute; top: 54px; left: 790px }
 .about { width: 90%; margin: 30px auto; overflow: hidden; line-height: 22px; }
 .about h2 { font-size: 22px; margin-bottom: 20px; background: #2a7497; padding: 10px 0; width: 200px; text-align: center; border-radius: 0 30px 30px 0; box-shadow: #21566f 1px 1px 1px; border-left: #dae1e4 6px solid; }
-.about p { margin-bottom: 20px }
+.about p { margin-bottom: 20px; line-height: 120%}
 .about ul { }
 .about_c { padding: 10px 0 0 10px; color: #999; line-height: 26px; }
 .about_c img { margin: 5px 0 }
 .about_c span { color: #19A566 }
 a.blog_link { color: #95cdff; margin: 0 20px }
+a.blog_link1 { color: #95cdff; margin: 0 20px }
 h4.atitle {
     font-size: 18px;
     margin-bottom: 30px;
@@ -103,3 +104,4 @@ h4.atitle span{ float:right;color:#fff}
 .shili {background-color: rgb(34, 26, 189);padding: 10px;border: 1px dotted rgb(119, 136, 85);word-wrap: break-word;}
 .bt-cs{background:#f90;padding:5px 10px;}
 .bt-cs a{color:#fff}
+

@@ -75,8 +75,9 @@ def article_comment(request):
     nickname = request.GET.get('nickname')
     content = request.GET.get('saytext')
     aid = request.GET.get('aid')
-
-    comment = Comment.objects.create(nickname=nickname, content=content, article_id=aid)
+    comment = None
+    if nickname and content is not None:
+        comment = Comment.objects.create(nickname=nickname, content=content, article_id=aid)
 
     if comment:
         data = {'status': 1}
