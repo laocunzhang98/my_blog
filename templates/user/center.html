@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    用户注册
+{% endblock %}
+{% block mycss %}
+    <link href="{% static  'css/register.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- css files -->
+
+    <!-- Online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese"
+          rel="stylesheet">
+    <style>
+        #icon {
+            width: 80px;
+            height: 80px;
+            border: #4bcfef;
+            border-radius: 40px;
+        }
+        .imgbox{
+            text-align: center;
+            display: none;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content -->
+    <div class="main">
+        <div class="main-w3l">
+            <h1 class="logo-w3">用户中心</h1>
+            <div class="w3layouts-main">
+                <h2><span>个人信息</span></h2>
+                <p>{{ msg }}</p>
+                <form action="{% url "user:center" %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                    <div>
+                        <div align="center"><img src="{{ user.yunicon }}" alt="" id="icon" onclick="F_Open_dialog()"></div><br>
+                        <div class="imgbox"><input type="file" name="icon" id="btn_file"></div>
+                    </div>
+                    <input placeholder="用户名" name="username" id="username" value='{{ user.username }}' type="text" required="">
+                    <input placeholder="邮箱" name="email" id="email" type="email" value='{{ user.email }}' required="">
+                    <input placeholder="手机号码" name="mobile" id="mobile" type="text" value='{{ user.mobile }}' required="">
+
+                    <input type="submit" value="提交更新" name="login">
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+         function F_Open_dialog()
+         {
+        document.getElementById("btn_file").click();
+        }
+
+    </script>
+
+    <script>
+        window.onload = function () {
+
+                document.getElementById('username').onchange = checkusername;
+                document.getElementById('mobile').onchange = checkmobile;
+                document.getElementById('email').onchange = checkemail;
+            }
+            function checkemail(){
+                var email = document.getElementById("email").value;
+                var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                if(reg.test(email))
+                    document.getElementById("email").setCustomValidity("");
+
+                else
+                    document.getElementById("email").setCustomValidity("邮箱格式有误");
+
+            }
+
+            function checkmobile() {
+                var mobile = document.getElementById("mobile").value;
+                if(!(/^1[3456789]\d{9}$/.test(mobile)))
+                    document.getElementById("mobile").setCustomValidity("手机号码有误");
+                else
+                    document.getElementById("mobile").setCustomValidity("");
+
+
+            }
+
+            function checkusername() {
+                var username = document.getElementById('username').value;
+                if (username.length < 2)
+                    document.getElementById('username').setCustomValidity("用户名长度不得小于2位")
+                else
+                    document.getElementById('username').setCustomValidity("")
+            }
+
+    </script>
+{% endblock %}
