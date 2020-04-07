@@ -2,7 +2,7 @@
 from django.db import models
 from mdeditor.fields import MDTextField #必须导入
 from user.models import UserProfile
-
+import django.utils.timezone as timezone
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, verbose_name='标签名')
@@ -21,7 +21,7 @@ class Article(models.Model):
     desc = models.CharField(max_length=256, verbose_name='简介')
 
     content = MDTextField(verbose_name='内容')
-    date = models.DateField(auto_now=True, verbose_name='发表日期')
+    date = models.DateField(default = timezone.now, verbose_name='发表日期')
     click_num = models.IntegerField(default=0, verbose_name='点击量')
     love_num = models.IntegerField(default=0, verbose_name='点赞量')
     image = models.ImageField(upload_to='uploads/article/%Y/%m/%d', verbose_name='文章图片', blank=True)
