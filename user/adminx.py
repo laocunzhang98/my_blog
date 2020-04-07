@@ -1,7 +1,7 @@
 import xadmin
 
 from xadmin import views
-
+from user.models import Friend_link
 
 class BaseSettings(object):
     enable_themes = True
@@ -15,3 +15,4 @@ class GlobalSettings(object):
 
 xadmin.site.register(views.BaseAdminView, BaseSettings)
 xadmin.site.register(views.CommAdminView, GlobalSettings)
+xadmin.site.register(Friend_link)

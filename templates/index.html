@@ -29,9 +29,19 @@
                     <a href="{% url 'article:detail' %}?id={{ darticle.id }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
                 </div>
             </li>
-
         {% endfor %}
-
-
     </ul>
+    </div>
+      <div id="NavTop">
+            <div id="NavCon">
+                <ul>
+                    <li><p>友情链接</p></li>
+                    {% for link in links%}
+
+                        <li><a href="{{ link.link_url }}">{{link.link_name}}</a></li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+      </div>
 {% endblock %}

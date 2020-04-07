@@ -15,4 +15,5 @@ urlpatterns = [
     path('center', user_center, name='center'),  # 本地存储
     path('center1', user_center1, name='center1'),  # 阿里云存储
     path('about_me', about_me, name='about_me'),
+
 ]

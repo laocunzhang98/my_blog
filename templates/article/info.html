@@ -62,13 +62,12 @@
         </ul>
         <div id="plpost">
             <form method="post">
+             {% csrf_token %}
             <p><span>来说句话吧....</span> <span>共有评论数:{{ comments.count }}条</span></p>
 
-            <p><input type="text" name="uname" id="uname" placeholder="输入用户昵称" required="required"></p>
+            <p><input type="text" name="uname" id="uname" placeholder="输入用户昵称" required="required"> </p>
             <p>
-                <textarea name="saytext" id="saytext" cols="80" rows="6" required="required">
-
-                </textarea>
+                <textarea name="saytext" id="saytext" cols="80" rows="6" required="required"></textarea>
             </p>
             <p><input type="submit" value="评论" id='btncomment' ></p>
             </form>

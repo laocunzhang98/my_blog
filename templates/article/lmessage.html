@@ -42,7 +42,6 @@
                     </div>
                     <div class="gbox">
                         <form action="{% url 'article:message' %}" method="post" name="form1" id="form1">
-                            {% csrf_token %}
                             <p><strong>来说点儿什么吧...</strong></p>
                             <p><span> 您的姓名:</span>
                                 *<input name="name" type="text" id="name" required="required"/>
@@ -82,7 +81,7 @@
                                 oImg[i].previousSibling.previousSibling.checked = true;
                                 oImg[i].style.opacity = '1';
                             } else {
-                                oImg[i].style.opacity = '.8';
+                                oImg[i].style.opacity = '.5';
                             }
                         }
                     }

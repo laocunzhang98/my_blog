@@ -30,8 +30,8 @@
                 <div class="cbp_tmicon"></div>
                 <div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">
                     <h2>{{ article.title }}</h2>
-                    <p><span class="blogpic"><a href="/"><img
-                            src="{% static 'images/t03.jpg' %}"></a></span>{{ article.desc }}</p>
+                    <p><span class="blogpic"><a href="{% url 'article:detail' %}?id={{ article.id }}" target="_blank"><img
+                            src="{{MEDIA_URL}}{{ article.image }}"></a></span>{{ article.desc }}</p>
                     <a href="{% url 'article:detail' %}?id={{ article.id }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
                 </div>
             </li>

@@ -12,3 +12,15 @@ class UserProfile(AbstractUser):
         db_table = 'userprofile'
         verbose_name = '用户表'
         verbose_name_plural = verbose_name
+
+
+class Friend_link(models.Model):
+    link_name = models.CharField(max_length=30, verbose_name="友链名字")
+    link_url = models.CharField(max_length=50,verbose_name="友链网址")
+    class Meta:
+        db_table = 'friend_link'
+        verbose_name = "友情链接"
+        verbose_name_plural = verbose_name
+        
+    def __str__(self):
+        return self.link_name

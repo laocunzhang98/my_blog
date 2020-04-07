@@ -18,14 +18,17 @@ from django.urls import reverse
 from article.models import Article
 from blog.settings import MEDIA_URL
 from user.forms import UserRegisterForm, RegisterForm, LoginForm, CaptchaTestForm
-from user.models import UserProfile
+from user.models import UserProfile, Friend_link
 from user.utils import util_sendmsg, upload_image
 from celery_tasks.tasks import send_email
 
 def index(request):
     farticles = Article.objects.all().order_by('-click_num')
     darticles = Article.objects.all().order_by('-date')[:8]
-    return render(request, 'index.html', context={'figure_articles': farticles[:3], 'darticles': darticles})
+    links = Friend_link.objects.all()
+
+    return render(request, 'index.html', context={'figure_articles': farticles[:3], 'darticles': darticles, "links":links})
+
 
 # 注册
 class register(views.View):

@@ -44,7 +44,7 @@ def article_detail(request):
                   context={'article': article, 'list_about': list_about, 'comments': comments, "previous_article": previous_article, "next_article": next_article})
 # 学无止境
 def article_show(request):
-    tags = Tag.objects.all()[:6]
+    tags = Tag.objects.all()
     tid = request.GET.get('tid',"")
     if tid:
         tag = Tag.objects.get(pk=tid)
